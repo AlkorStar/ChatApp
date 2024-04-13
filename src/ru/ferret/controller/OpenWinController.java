@@ -13,7 +13,7 @@ import ru.ferret.client.Main;
 import java.io.*;
 import java.net.Socket;
 
-public class OpenWin {
+public class OpenWinController {
     // порт
     private static final int SERVER_PORT = 3443;
     // адрес сервера

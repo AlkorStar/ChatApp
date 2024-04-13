@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import ru.ferret.controller.ChatWin;
-import ru.ferret.controller.OpenWin;
+import ru.ferret.controller.ChatWinController;
+import ru.ferret.controller.OpenWinController;
 
 import java.io.IOException;
 
@@ -24,9 +24,9 @@ public class Main extends Application {
             stage.setScene(new Scene(root, 500, 600)); // установка размера
             stage.setResizable(false);
             stage.getIcons().add(new Image("file:./src/photo.png")); //новый путь
-            if(OpenWin.client != null){
+            if(OpenWinController.client != null){
                 stage.setOnCloseRequest(event -> {
-                    OpenWin.client.close();
+                    OpenWinController.client.close();
                 });
             }
             stage.show();
@@ -38,8 +38,8 @@ public class Main extends Application {
     @Override
     public void stop() {
         // Stop the timer when the application is closed
-        if(ChatWin.timer != null){
-            ChatWin.timer.cancel();
+        if(ChatWinController.timer != null){
+            ChatWinController.timer.cancel();
         }
     }
     public void start(Stage stage, String file, int width, int high) throws Exception {
@@ -47,7 +47,7 @@ public class Main extends Application {
         stage.setTitle("The rapid Ferret"); // установка заголовка
         stage.setScene(new Scene(root, width, high)); // установка размера
         stage.setOnCloseRequest(event -> {
-            OpenWin.client.close();
+            OpenWinController.client.close();
         });
         stage.show();
     }

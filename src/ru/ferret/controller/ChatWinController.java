@@ -28,7 +28,7 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ChatWin {
+public class ChatWinController {
     private volatile boolean stopThread = false;
     @FXML
     private Label byeMess;
@@ -56,8 +56,8 @@ public class ChatWin {
 
     @FXML
     public void initialize() {
-        chatField.setText("Чат "+OpenWin.client.getChat());
-        if(!OpenWin.client.getStatus().equals("admin")){
+        chatField.setText("Чат "+OpenWinController.client.getChat());
+        if(!OpenWinController.client.getStatus().equals("admin")){
             capt.setVisible(false);
         }else{
             timer = new Timer();
@@ -82,25 +82,25 @@ public class ChatWin {
         send.setOnAction(event -> {
             String message = mess.getText();
             if (!message.isEmpty()) {
-            OpenWin.client.sendMessage(message);
+            OpenWinController.client.sendMessage(message);
             mess.clear();
             }
         });
 
         exit.setOnAction(event -> {
             stopThread = true;
-            if(OpenWin.client.getStatus().equals("admin")) {
+            if(OpenWinController.client.getStatus().equals("admin")) {
                 timer.cancel();
-                OpenWin.client.sendAdmin("endIm");
+                OpenWinController.client.sendAdmin("endIm");
             }
             //создание нового окна с чатом
             exit.getScene().getWindow().hide();
             Stage stage = new Stage();
             Main main = new Main();
             stage.getIcons().add(new Image("file:./src/photo.png"));
-            OpenWin.client.sendAdmin("bye");
-            OpenWin.client.setStatus("");
-            OpenWin.client.setChat("");
+            OpenWinController.client.sendAdmin("bye");
+            OpenWinController.client.setStatus("");
+            OpenWinController.client.setChat("");
             try {
                 main.start(stage, "logIn.fxml",500, 600);
             } catch (Exception e) {
@@ -110,9 +110,9 @@ public class ChatWin {
 
 
         Thread thread = new Thread(() -> {
-            while (!stopThread && OpenWin.client.getSocket().isConnected()) {
+            while (!stopThread && OpenWinController.client.getSocket().isConnected()) {
                 try {
-                    String message = OpenWin.client.getIn().readLine();
+                    String message = OpenWinController.client.getIn().readLine();
                     String[] parts = message.split(" ");
                     if(parts[0].equals("count")){
                         Platform.runLater(() -> chatInfo.setText("Число участников: "+ parts[1]));
@@ -132,7 +132,7 @@ public class ChatWin {
                         Platform.runLater(() -> vbox_messages.getChildren().add(label_message));
                     }
                 } catch (IOException e) {
-                    OpenWin.client.close();
+                    OpenWinController.client.close();
                     break;
                 }
             }
@@ -146,7 +146,7 @@ public class ChatWin {
             ImageIO.write(image, "png", byteArrayOutputStream);
             byte[] imageBytes = byteArrayOutputStream.toByteArray();
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-            OpenWin.client.sendAdmin(base64Image); //image _chatName-brbrbrbrImage
+            OpenWinController.client.sendAdmin(base64Image); //image _chatName-brbrbrbrImage
         } catch (IOException e) {
             e.printStackTrace();
         }
