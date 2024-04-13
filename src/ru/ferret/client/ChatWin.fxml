@@ -44,7 +44,7 @@
             <ImageView fx:id="screen" fitHeight="550.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="byeFerr" fitHeight="475.0" fitWidth="519.0" layoutX="203.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="file:/C:/Users/Екатерина/IdeaProjects/ChatApp/end.png" />
+                  <Image url="file:./src/end.png" />
                </image>
             </ImageView>
             <Accordion prefHeight="600.0" prefWidth="355.0">

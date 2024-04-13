@@ -23,7 +23,7 @@ public class Main extends Application {
             stage.setTitle("The rapid Ferret - Client"); // установка заголовка
             stage.setScene(new Scene(root, 500, 600)); // установка размера
             stage.setResizable(false);
-            stage.getIcons().add(new Image("file:/C:/Users/Екатерина/IdeaProjects/ChatApp/photo.png"));
+            stage.getIcons().add(new Image("file:./src/photo.png"));
             if(OpenWin.client != null){
                 stage.setOnCloseRequest(event -> {
                     OpenWin.client.close();
