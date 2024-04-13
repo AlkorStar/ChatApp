@@ -97,7 +97,7 @@ public class ChatWin {
             exit.getScene().getWindow().hide();
             Stage stage = new Stage();
             Main main = new Main();
-            stage.getIcons().add(new Image("file:/C:/Users/Екатерина/IdeaProjects/ChatApp/photo.png"));
+            stage.getIcons().add(new Image("file:./src/photo.png"));
             OpenWin.client.sendAdmin("bye");
             OpenWin.client.setStatus("");
             OpenWin.client.setChat("");

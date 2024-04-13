@@ -100,7 +100,7 @@ public class Login {
         button.getScene().getWindow().hide();
         Stage stage = new Stage();
         stage.setResizable(true);
-        stage.getIcons().add(new Image("file:/C:/Users/Екатерина/IdeaProjects/ChatApp/photo.png"));
+        stage.getIcons().add(new Image("file:./src/photo.png"));
         Main main = new Main();
         try {
             main.start(stage, "ChatWin.fxml", 900, 600);

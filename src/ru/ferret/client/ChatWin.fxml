@@ -47,6 +47,7 @@
                   <Image url="file:./src/end.png" />
                </image>
             </ImageView>
+
             <Accordion prefHeight="600.0" prefWidth="355.0">
               <panes>
                 <TitledPane fx:id="chatField" animated="false" text="Чат">

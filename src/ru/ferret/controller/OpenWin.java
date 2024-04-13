@@ -68,7 +68,7 @@ public class OpenWin {
                     Main main = new Main();
                     Stage stage = new Stage();
                     stage.setResizable(false);
-                    stage.getIcons().add(new Image("file:/C:/Users/Екатерина/IdeaProjects/ChatApp/photo.png"));
+                    stage.getIcons().add(new Image("file:./src/photo.png"));
                     try {
                         //478, 396
                         main.start(stage, "logIn.fxml", 500, 600);
